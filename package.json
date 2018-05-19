@@ -1,5 +1,5 @@
 {
-  "name": "aws-nodejs-typescript",
+  "name": "aws-nodejs-ts-cds",
   "version": "1.0.0",
   "description": "Serverless webpack example using Typescript",
   "main": "handler.js",
@@ -45,5 +45,20 @@
     "webpack-node-externals": "^1.7.2"
   },
   "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
-  "license": "MIT"
+  "license": "MIT",
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "**/*.d.ts",
+      "**/coverage/**",
+      "**/*.spec.ts",
+      "**/mocha.env.js",
+      "webpack.config.js",
+      "source-map-install.js"
+    ],
+    "all": true
+  }
 }
