@@ -1,5 +1,6 @@
 const path = require('path');
 const slsw = require('serverless-webpack');
+var nodeExternals = require('webpack-node-externals');
 
 const entries = {};
 
@@ -8,6 +9,7 @@ Object.keys(slsw.lib.entries).forEach(key => (
 ));
 
 module.exports = {
+  externals: [nodeExternals()],
   entry: entries,
   devtool: 'source-map',
   resolve: {
@@ -27,7 +29,8 @@ module.exports = {
   target: 'node',
   module: {
     loaders: [
-      { test: /\.ts(x?)$/, loader: 'ts-loader' },
+      { test: /\.ts(x?)$/, exclude: /node_modules/, loader: 'ts-loader' },
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
     ],
   },
 };
