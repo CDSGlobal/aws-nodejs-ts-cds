@@ -6,6 +6,6 @@ export const doLookup: (event: APIGatewayEvent) => Promise<ResponseObject> = asy
 
         // Call WSG
 
-        resolve({message: "Success message", id: 1337});
-    })
-}
+        resolve({message: 'Success message', id: 1337});
+    });
+};
