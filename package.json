@@ -11,9 +11,10 @@
     "lint": "node_modules/.bin/tslint **/*.ts --exclude **/node_modules/**",
     "package": "node_modules/.bin/sls package --stage dev",
     "run-offline": "node_modules/.bin/sls offline start --stage dev",
-    "invoke-local": "sls invoke local --function DynamoFunction --path ./test/events/sample-get-event.json --stage dev",
+    "invoke-local": "sls invoke local --function hello --path ./test/events/sample-get-event.json --stage dev",
     "tsjson-get-response": "node_modules/.bin/typescript-json-schema ./src/DomainModel.ts ResponseObject -o ./apiDocs/get-response-v0.0.1.json --ignoreErrors",
-    "deploy": "node_modules/.bin/sls deploy --stage dev"
+    "deploy": "node_modules/.bin/sls deploy --stage dev",
+    "clean": "rm test-results.xml & rm -rf coverage & rm -rf .nyc_output & rm -rf .serverless & rm yarn-error.log & rm apiDocs/*.*"
   },
   "dependencies": {
     "source-map-support": "^0.5.0"
