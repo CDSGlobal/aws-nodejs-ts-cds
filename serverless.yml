@@ -7,6 +7,8 @@ plugins:
   - serverless-aws-documentation
   - serverless-offline
   - api-gateway-stage-tag-plugin
+  - serverless-plugin-tracing
+  - serverless-plugin-stage-variables
 
 package:
   exclude:
