@@ -9,7 +9,7 @@ node('docker') {
         nodeHelper()
 
         stage('Checkout Source') {
-            checkout scm
+            gitVars = checkout scm
         }
         stage('Install Dependencies') {
             sh 'yarn install'
