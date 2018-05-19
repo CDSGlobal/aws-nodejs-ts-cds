@@ -41,7 +41,7 @@ custom:
       -
         name: ResponseObject
         contentType: "application/json"
-        schema: ${file(./apiDocs/response-object-v0.0.1.json)}    
+        schema: ${file(./apiDocs/get-response-v0.0.1.json)}    
 functions:
   hello:
     handler: src/handler.lambdaHandler
@@ -49,3 +49,19 @@ functions:
       - http:
           method: get
           path: hello
+          cors: true
+          # authorizer: aws_iam  ### require sig4 signed requests
+          documentation:
+            summary: Summary of endpoint's purpose
+            description: Description of endpoint
+            methodResponses:
+              -
+                statusCode: "200"
+                responseHeaders:
+                  -
+                    name: "Access-Control-Allow-Origin"
+                    description: "CORS support"
+                responseModels:
+                  "application/json": "ResponseObject"
+resources:
+  Description: Description of this CloudFormation stack.
