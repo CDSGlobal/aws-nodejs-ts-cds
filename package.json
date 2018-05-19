@@ -4,7 +4,16 @@
   "description": "Serverless webpack example using Typescript",
   "main": "handler.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/mocha **/*.spec.ts -t 10000 --require ts-node/register --require mocha.env --reporter spec",
+    "coverage": "node_modules/.bin/nyc node_modules/.bin/mocha **/*.spec.ts -t 10000 --require ts-node/register --require mocha.env --reporter spec",
+    "coverageReport": "node_modules/.bin/nyc --reporter cobertura node_modules/.bin/mocha **/*.spec.ts -t 10000 --require ts-node/register --require mocha.env --reporter spec",
+    "junitReport": "node_modules/.bin/mocha **/*.spec.ts -t 10000 --require ts-node/register --require mocha.env --reporter mocha-junit-reporter",
+    "lint": "node_modules/.bin/tslint **/*.ts --exclude **/node_modules/**",
+    "package": "node_modules/.bin/sls package --stage dev",
+    "run-offline": "node_modules/.bin/sls offline start --stage dev",
+    "invoke-local": "sls invoke local --function DynamoFunction --path ./test/events/sample-get-event.json --stage dev",
+    "tsjson-get-response": "node_modules/.bin/typescript-json-schema ./src/DomainModel.ts ResponseObject -o ./apiDocs/get-response-v0.0.1.json --ignoreErrors",
+    "deploy": "node_modules/.bin/sls deploy --stage dev"
   },
   "dependencies": {
     "source-map-support": "^0.5.0"
