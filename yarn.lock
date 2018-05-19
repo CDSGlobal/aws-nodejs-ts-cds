@@ -133,6 +133,10 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
+api-gateway-stage-tag-plugin@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/api-gateway-stage-tag-plugin/-/api-gateway-stage-tag-plugin-1.0.1.tgz#1a67d12d6f99a8ff280b1add4dfa162028817a4e"
+
 apollo-client@^1.9.2:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-1.9.3.tgz#37000b3c801f4571b7b089739e696a158896aeab"
