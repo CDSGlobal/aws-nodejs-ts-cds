@@ -6,11 +6,7 @@ export const lambdaHandler: Handler = async (event: APIGatewayEvent, context: Co
   const lookupResult = await doLookup(event);
   const response = {
     statusCode: 200,
-    body: JSON.stringify({
-      message: lookupResult.message,
-      responseId: lookupResult.id,
-      input: event,
-    }),
+    body: JSON.stringify(lookupResult),
   };
 
   if (callback) {

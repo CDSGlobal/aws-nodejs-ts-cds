@@ -7,8 +7,8 @@ const fs = require('fs');
 
 describe('Test Suite', () => {
 
-    it('Can find an existing record', () => {
-        const testEvent = JSON.parse(fs.readFileSync('events/sample-get-event.json')) as APIGatewayEvent;
+    it('Returns a response', () => {
+        const testEvent = JSON.parse(fs.readFileSync('test/events/sample-get-event.json')) as APIGatewayEvent;
 
         return doLookup(testEvent).then((response: ResponseObject) => {
             if (response.message) {
