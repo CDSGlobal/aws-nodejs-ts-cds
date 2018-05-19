@@ -82,26 +82,27 @@ resources:
             LoggingLevel: INFO
             ResourcePath: "/*"
             MetricsEnabled: true
-    apiGatewayRole:
-      Type: "AWS::IAM::Role"
-      Properties:
-        AssumeRolePolicyDocument:
-          Version: '2012-10-17'
-          Statement:
-            - Effect: Allow
-              Principal:
-                Service:
-                  - apigateway.amazonaws.com
-              Action: sts:AssumeRole           
-        ManagedPolicyArns:
-          - "arn:aws:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
-        RoleName: gc-${opt:stage}-APIGWPushToCloudWatchLogs
-    Account:
-      Type: "AWS::ApiGateway::Account"
-      Properties: 
-        CloudWatchRoleArn: 
-          Fn::GetAtt: [apiGatewayRole, Arn]
-    MyLambdaExecutionRole:
+    # Already set by GlobalCare
+    # apiGatewayRole:
+    #   Type: "AWS::IAM::Role"
+    #   Properties:
+    #     AssumeRolePolicyDocument:
+    #       Version: '2012-10-17'
+    #       Statement:
+    #         - Effect: Allow
+    #           Principal:
+    #             Service:
+    #               - apigateway.amazonaws.com
+    #           Action: sts:AssumeRole           
+    #     ManagedPolicyArns:
+    #       - "arn:aws:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+    #     RoleName: ${self:service}-${opt:stage}-APIGWPushToCloudWatchLogs
+    # Account:
+    #   Type: "AWS::ApiGateway::Account"
+    #   Properties: 
+    #     CloudWatchRoleArn: 
+    #       Fn::GetAtt: [apiGatewayRole, Arn]
+    MinimalLambdaRole:
       Type: "AWS::IAM::Role"
       Properties: 
         AssumeRolePolicyDocument:
@@ -132,4 +133,4 @@ resources:
                 Action:
                   - secretsmanager:GetSecretValue
                 Resource: "*"
-        RoleName: ${self:service}-callGlobalCustomerRole-${opt:stage}                            
+        RoleName: ${self:service}-MinimalLambdaRole-${opt:stage}                            
