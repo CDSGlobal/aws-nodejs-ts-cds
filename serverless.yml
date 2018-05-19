@@ -23,7 +23,20 @@ provider:
     Application: CDS-US-NonProduction-AppName
   stage: dev
   region: us-east-1
-
+# you can define service wide environment variables here
+  environment:
+    stage: ${opt:stage}
+    serviceName: ${self:service}
+    Application: AppName
+custom:
+  apiStageTags:
+    Application: AppName
+    Stage: ${opt:stage}  
+  webpackIncludeModules: #true
+    forceExclude:
+      - aws-sdk
+  serverless-offline:
+    port: 3001      
 functions:
   hello:
     handler: src/handler.lambdaHandler
