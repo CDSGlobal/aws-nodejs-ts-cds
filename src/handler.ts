@@ -1,7 +1,7 @@
 import { APIGatewayEvent, Callback, Context, Handler } from 'aws-lambda';
 import { doLookup } from './functionLogic';
 
-export const lambdaHandler: Handler = async (event: APIGatewayEvent, context: Context, cb: Callback) => {
+export const lambdaHandler: Handler = async (event: APIGatewayEvent, context: Context, callback?: Callback) => {
 
   const lookupResult = await doLookup(event);
   const response = {
@@ -13,5 +13,9 @@ export const lambdaHandler: Handler = async (event: APIGatewayEvent, context: Co
     }),
   };
 
-  cb(null, response);
+  if (callback) {
+    callback(null, response);
+  } else {
+    return response;
+  }
 };
