@@ -1,5 +1,10 @@
 **Typescript Lambda starter using _Serverless_**
 
+**Use as a template for a new _Serverless_ service**
+
+`sls create --template-url https://github.com/CDSGlobal/aws-nodejs-ts-cds --path template-test`
+
+
 Features:
  - Lambda function stub.
  - API Gateway triggers for this lambda function (GET and POST)
